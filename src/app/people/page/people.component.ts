@@ -1,4 +1,3 @@
-import { AsyncPipe } from '@angular/common';
 import {
   Component,
   DestroyRef,
@@ -15,7 +14,7 @@ import { PeopleService } from '../service/people.service';
 @Component({
   selector: 'app-people',
   standalone: true,
-  imports: [AsyncPipe, SpinnerComponent],
+  imports: [SpinnerComponent],
   templateUrl: './people.component.html',
   styleUrl: './people.component.scss',
 })
