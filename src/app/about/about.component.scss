@@ -1,0 +1,20 @@
+@use "colors";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 32px;
+}
+
+.header {
+  font-size: 24px;
+}
+
+ul {
+  margin-left: 18px;
+}
+
+.footer {
+  color: colors.$gray;
+}
