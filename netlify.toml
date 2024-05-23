@@ -1,0 +1,6 @@
+[Settings]
+  ID = "The People And About"
+
+[build]
+  publish = "dist/the-people-and-about/browser"
+  command = "ng build"
