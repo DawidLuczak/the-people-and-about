@@ -8,13 +8,14 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Observable, Subject, map, switchMap } from 'rxjs';
+import { SpinnerComponent } from '../../shared/spinner/spinner.component';
 import { Person } from '../people';
 import { PeopleService } from '../service/people.service';
 
 @Component({
   selector: 'app-people',
   standalone: true,
-  imports: [AsyncPipe],
+  imports: [AsyncPipe, SpinnerComponent],
   templateUrl: './people.component.html',
   styleUrl: './people.component.scss',
 })
@@ -54,9 +55,9 @@ export class PeopleComponent implements OnInit, OnDestroy {
   }
 
   protected nextPerson(): void {
+    this.person.set(null);
     this._person$.next({});
-    clearInterval(this._peopleInterval);
-    this._peopleInterval = this.nextPersonInterval();
+    this.resetNextPersonInterval();
   }
 
   private nextPersonInterval(): NodeJS.Timeout {
@@ -64,5 +65,10 @@ export class PeopleComponent implements OnInit, OnDestroy {
       () => this._person$.next({}),
       this.NEW_PERSON_INTERVAL_TIME
     );
+  }
+
+  private resetNextPersonInterval(): void {
+    clearInterval(this._peopleInterval);
+    this._peopleInterval = this.nextPersonInterval();
   }
 }
