@@ -1,0 +1,16 @@
+@if (person(); as person) {
+<div class="person-container">
+  <img
+    [src]="person.picture.large"
+    [alt]="person.name.first + ' ' + person.name.last"
+  />
+
+  <div class="title">
+    <p>Hi, My name is</p>
+
+    <h2>{{ person.name.first }} {{ person.name.last }}</h2>
+  </div>
+</div>
+
+<button (click)="nextPerson()">New</button>
+}
